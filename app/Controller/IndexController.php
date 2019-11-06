@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Services\Client\Demo;
-
 class IndexController extends AbstractController
 {
     public function index()
