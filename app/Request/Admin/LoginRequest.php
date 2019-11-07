@@ -34,4 +34,12 @@ class LoginRequest extends FormRequest
             'password' => 'required',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'mobile.required' => 'mobile is required',
+            'password.required' => 'password is required',
+        ];
+    }
 }

@@ -29,4 +29,10 @@ class ErrorCode extends AbstractConstants
      * @Message("Token Error！")
      */
     const NOT_TOKEN = 1400;
+
+    /**
+     * @Message("参数错误！")
+     */
+    const PARAMETER_ERROR = 1500;
+
 }
