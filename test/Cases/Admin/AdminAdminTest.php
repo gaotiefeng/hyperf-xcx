@@ -10,6 +10,13 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-return [
-    'adminServer' => Hyperf\HttpServer\Server::class,
-];
+class AdminAdminTest extends \HyperfTest\HttpTestCase
+{
+    public function testAdminAdminLogin()
+    {
+        $res = $this->adminClient->post('/admin/login', [
+        ]);
+
+        $this->assertSame(0, $res['code']);
+    }
+}

@@ -11,5 +11,7 @@ declare(strict_types=1);
  */
 
 return [
-    'adminServer' => Hyperf\HttpServer\Server::class,
+    'locale' => 'zh_CN',
+    'fallback_locale' => 'en',
+    'path' => BASE_PATH . '/storage/languages',
 ];

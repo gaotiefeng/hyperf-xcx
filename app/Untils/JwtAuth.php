@@ -19,7 +19,7 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Utils\Traits\StaticInstance;
 use Throwable;
 
-class JwtAuth
+class JwtAuth implements JwtAuthInterface
 {
     use StaticInstance;
 
@@ -54,7 +54,7 @@ class JwtAuth
         return $this;
     }
 
-    public function getUserId()
+    public function getUserId(): int
     {
         return $this->userId;
     }
@@ -73,7 +73,7 @@ class JwtAuth
         return $this->userId > 0;
     }
 
-    public function getToken()
+    public function getToken(): string
     {
         $time = time();
         $params = [

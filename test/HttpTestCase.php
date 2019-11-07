@@ -29,10 +29,16 @@ abstract class HttpTestCase extends TestCase
      */
     protected $client;
 
+    /**
+     * @var Client
+     */
+    protected $adminClient;
+
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
         $this->client = make(Client::class);
+        $this->adminClient = make(Client::class, ['server' => 'admin']);
     }
 
     public function __call($name, $arguments)

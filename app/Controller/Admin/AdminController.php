@@ -1,16 +1,26 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
 
 namespace App\Controller\Admin;
 
-use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
+use App\Controller\IndexController;
+use App\Request\Admin\LoginRequest;
 
-class AdminController
+class AdminController extends IndexController
 {
-    public function index(RequestInterface $request, ResponseInterface $response)
+    public function login(LoginRequest $request)
     {
-        return $response->raw('Hello Hyperf! 111');
+        $result = $request->validated();
+
+        return $this->response->success($result);
     }
 }

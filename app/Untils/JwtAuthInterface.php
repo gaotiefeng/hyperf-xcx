@@ -10,6 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-return [
-    'adminServer' => Hyperf\HttpServer\Server::class,
-];
+namespace App\Untils;
+
+interface JwtAuthInterface
+{
+    public function getUserId(): int;
+
+    public function getToken(): string;
+}
