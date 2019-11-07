@@ -11,4 +11,5 @@ declare(strict_types=1);
  */
 
 return [
+    'adminServer' => Hyperf\HttpServer\Server::class
 ];
