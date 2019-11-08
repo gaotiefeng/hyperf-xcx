@@ -77,7 +77,7 @@ class JwtAuth implements JwtAuthInterface
     {
         $time = time();
         $params = [
-            'iss' => 'article',
+            'iss' => 'hyperf-xcx',
             'aud' => 'user',
             'iat' => $time,
             'nbf' => $time,

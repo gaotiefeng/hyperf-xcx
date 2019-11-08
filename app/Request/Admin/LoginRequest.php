@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mobile' => 'required',
+            'mobile' => 'required | regex:/^1\d{10}$/',
             'password' => 'required',
         ];
     }
@@ -38,6 +38,7 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'mobile.regex' => 'mobile is error',
             'mobile.required' => 'mobile is required',
             'password.required' => 'password is required',
         ];

@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 
 return [
+    App\Untils\JwtAuthInterface::class => App\Untils\JwtAuth::class,
     Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
     'adminServer' => Hyperf\HttpServer\Server::class,
 ];

@@ -14,7 +14,9 @@ namespace App\Untils;
 
 interface JwtAuthInterface
 {
-    public function getUserId(): int;
+    public function init(int $userId);
 
-    public function getToken(): string;
+    public function getUserId();
+
+    public function getToken();
 }

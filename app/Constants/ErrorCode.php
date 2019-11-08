@@ -26,13 +26,27 @@ class ErrorCode extends AbstractConstants
     const SERVER_ERROR = 500;
 
     /**
+     * @Message("mobile exists！")
+     */
+    const MOBILE_EXISTS = 14001;
+
+    /**
+     * @Message("password error！")
+     */
+    const PASSWORD_ERROR = 14002;
+
+    /**
+     * @Message("mobile not exists！")
+     */
+    const MOBILE_NOT_EXISTS = 14002;
+
+    /**
      * @Message("Token Error！")
      */
-    const NOT_TOKEN = 1400;
+    const NOT_TOKEN = 14000;
 
     /**
      * @Message("参数错误！")
      */
-    const PARAMETER_ERROR = 1500;
-
+    const PARAMETER_ERROR = 15000;
 }

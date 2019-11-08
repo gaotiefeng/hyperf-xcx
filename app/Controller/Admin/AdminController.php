@@ -14,12 +14,31 @@ namespace App\Controller\Admin;
 
 use App\Controller\IndexController;
 use App\Request\Admin\LoginRequest;
+use App\Services\Biz\Admin\AdminBiz;
+use Hyperf\Di\Annotation\Inject;
 
 class AdminController extends IndexController
 {
+    /**
+     * @Inject
+     * @var AdminBiz
+     */
+    protected $biz;
+
     public function login(LoginRequest $request)
     {
-        $result = $request->validated();
+        $data = $request->validated();
+
+        $result = $this->biz->login($data);
+
+        return $this->response->success($result);
+    }
+
+    public function register(LoginRequest $request)
+    {
+        $data = $request->validated();
+
+        $result = $this->biz->save($data);
 
         return $this->response->success($result);
     }

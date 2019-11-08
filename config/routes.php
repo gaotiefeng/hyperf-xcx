@@ -17,4 +17,5 @@ Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@i
 Router::addServer('admin', function () {
     Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
     Router::post('/admin/login', 'App\Controller\Admin\AdminController@login');
+    Router::post('/admin/register', 'App\Controller\Admin\AdminController@register');
 });
