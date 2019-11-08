@@ -40,7 +40,8 @@
         "hyperf/model-cache": "~1.1.0",
         "gaotiefeng/redis-application": "^1.0",
         "firebase/php-jwt": "^5.0",
-        "hyperf/validation": "^1.1"
+        "hyperf/validation": "^1.1",
+        "overtrue/wechat": "~4.0"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
