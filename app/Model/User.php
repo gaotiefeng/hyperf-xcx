@@ -14,6 +14,11 @@ namespace App\Model;
 use Hyperf\DbConnection\Model\Model;
 /**
  * @property int $id 
+ * @property string $openid 
+ * @property string $session_key 
+ * @property string $nikename 
+ * @property string $crated_at 
+ * @property \Carbon\Carbon $updated_at 
  */
 class User extends Model
 {
@@ -34,5 +39,5 @@ class User extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'int'];
+    protected $casts = ['id' => 'int', 'updated_at' => 'datetime'];
 }

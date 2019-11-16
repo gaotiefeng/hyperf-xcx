@@ -13,10 +13,11 @@ namespace App\Model;
 
 use Hyperf\DbConnection\Model\Model;
 /**
- * @property \Carbon\Carbon $created_at 
  * @property int $id 
  * @property string $mobile 
  * @property string $password 
+ * @property string $content 
+ * @property \Carbon\Carbon $created_at 
  * @property \Carbon\Carbon $updated_at 
  */
 class Admin extends Model
@@ -38,5 +39,5 @@ class Admin extends Model
      *
      * @var array
      */
-    protected $casts = ['created_at' => 'datetime', 'id' => 'int', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'int', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }
