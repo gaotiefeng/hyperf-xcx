@@ -14,6 +14,10 @@ use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 
+Router::addServer('http', function () {
+    Router::get('/user/login','App\Controller\Xcx\UserController@login');
+});
+
 Router::addServer('admin', function () {
     Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
     Router::post('/admin/login', 'App\Controller\Admin\AdminController@login');
