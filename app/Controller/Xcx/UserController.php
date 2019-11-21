@@ -29,6 +29,10 @@ class UserController extends IndexController
 
         $result = $app->auth->session($code);
 
+        $accessToken = $this->getToken();
+
+        $this->userInfo($accessToken,$result['openid']);
+
         queue_push(new UserJob($result),1);
 
         return $this->response->success($result);
@@ -48,9 +52,11 @@ class UserController extends IndexController
     }
 
     /**
+     * @param $accessToken string
+     * @param $openId string
      * https://api.weixin.qq.com/wxa/getpaidunionid?access_token=ACCESS_TOKEN&openid=OPENID
      */
-    public function userInfo($accessToken, $openId)
+    public function userInfo(string $accessToken = '', string $openId = '')
     {
         $userInfo = di()->get(UserClient::class)->client($accessToken, $openId);
 
