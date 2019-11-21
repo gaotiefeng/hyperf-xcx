@@ -24,8 +24,8 @@ class UserJob extends Job
         if(empty($model)) {
             $model = new User();
             $model->openid = $params['openid'];
+            $model->session_key = $params['session_key'];
+            $model->save();
         }
-        $model->session_key = $params['session_key'];
-        $model->save();
     }
 }

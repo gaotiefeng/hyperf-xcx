@@ -62,6 +62,7 @@ class UserController extends IndexController
     {
         $userInfo = di()->get(UserClient::class)->client($accessToken, $openId);
 
-        queue_push(new UserJob($userInfo),2);
+        var_dump($userInfo);
+        //queue_push(new UserJob($userInfo),2);
     }
 }
