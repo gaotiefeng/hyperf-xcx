@@ -22,10 +22,10 @@ class UserJob extends Job
         $params = $this->params;
         $model = User::query()->where('openid','=', $params['openid'])->first();
         if(empty($model)) {
-            $user = new User();
-            $user->openid = $params['openid'];
-            $user->session_key = $params['session_key'];
-            $user->save();
+            $model = new User();
+            $model->openid = $params['openid'];
         }
+        $model->session_key = $params['session_key'];
+        $model->save();
     }
 }

@@ -6,6 +6,7 @@ namespace App\Controller\Xcx;
 
 use App\Controller\IndexController;
 use App\Job\UserJob;
+use App\Services\Client\UserClient;
 use EasyWeChat\Factory;
 
 class UserController extends IndexController
@@ -31,5 +32,28 @@ class UserController extends IndexController
         queue_push(new UserJob($result),1);
 
         return $this->response->success($result);
+    }
+
+    /**
+     * https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+     */
+    public function getToken()
+    {
+        $config = config('xcx');
+        $app = Factory::miniProgram($config);
+
+        $result = $app->access_token->getToken();
+
+        return $result;
+    }
+
+    /**
+     * https://api.weixin.qq.com/wxa/getpaidunionid?access_token=ACCESS_TOKEN&openid=OPENID
+     */
+    public function userInfo($accessToken, $openId)
+    {
+        $userInfo = di()->get(UserClient::class)->client($accessToken, $openId);
+
+        queue_push(new UserJob($userInfo),2);
     }
 }
