@@ -19,13 +19,16 @@ class UserJob extends Job
 
     public function handle()
     {
-        $params = $this->params;
-        $model = User::query()->where('openid','=', $params['openid'])->first();
-        if(empty($model)) {
-            $model = new User();
-            $model->openid = $params['openid'];
-            $model->session_key = $params['session_key'];
-            $model->save();
+        $data = $this->params;
+        if($openId = $data['openid'] ?? null) {
+            $model = User::query()->where('openid','=', $openId)->first();
+            if(empty($model)) {
+                $model = new User();
+                $model->openid = $openId;
+                $model->session_key = $data['session_key'];
+                $model->save();
+            }
         }
+
     }
 }
