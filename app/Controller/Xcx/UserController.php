@@ -48,10 +48,10 @@ class UserController extends IndexController
 
         $result = $app->access_token->getToken();
 
-        var_dump($result);
         $tokenKey  = $app->access_token->getTokenKey();
+        var_dump($tokenKey);
 
-        return $result[$tokenKey];
+        return $result["access_token"];
     }
 
     /**
