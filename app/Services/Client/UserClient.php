@@ -38,6 +38,7 @@ class UserClient
         $params = [
             'access_token' => $accessToken,
             'openid' =>  $openId,
+            'transaction_id' => '',
         ];
         // TODO get ['query' => []]  post ['form_params' => $params]
         return $client->get('/wxa/getpaidunionid', ['query' => $params])->getBody()->getContents();
