@@ -49,4 +49,10 @@ class UserController extends IndexController
         return $result[$tokenKey];
     }
 
+
+    public function info()
+    {
+        $data = $this->request->all();
+        return $data;
+    }
 }
