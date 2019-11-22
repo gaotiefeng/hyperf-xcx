@@ -61,7 +61,7 @@ class UserController extends IndexController
     {
         $userInfo = $this->request->input('userInfo');
         $openId = $this->request->input('openid');
-
+var_dump($userInfo);
         $result = $this->biz->userSave($openId, $userInfo);
 
         return $result;
