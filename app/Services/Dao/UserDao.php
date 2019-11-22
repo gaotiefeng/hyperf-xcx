@@ -29,7 +29,7 @@ class UserDao extends Services
             $model = new User();
             $model->openid = $openId;
         }
-        $model->nike_name = $data['nikeName'];
+        $model->nickName = $data['nickName'];
         $model->avatarUrl = $data['avatarUrl'];
         $model->city = $data['city'];
         $model->province = $data['province'];

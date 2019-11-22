@@ -16,7 +16,7 @@ use Hyperf\DbConnection\Model\Model;
  * @property int $id 
  * @property string $openid 
  * @property string $session_key 
- * @property string $nike_name 
+ * @property string $nickName 
  * @property string $avatarUrl 
  * @property string $province 
  * @property string $city 
