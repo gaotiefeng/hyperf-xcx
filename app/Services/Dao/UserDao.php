@@ -1,8 +1,16 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
 
 namespace App\Services\Dao;
-
 
 use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
@@ -15,7 +23,7 @@ class UserDao extends Services
     {
         $model = User::query()->where('openid', '=', $openId)->first();
 
-        if(empty($model) && $throw) {
+        if (empty($model) && $throw) {
             throw new BusinessException(ErrorCode::OPENID_NOT_EXISTS);
         }
 
@@ -25,7 +33,7 @@ class UserDao extends Services
     public function save(string $openId, array $data)
     {
         $model = $this->first($openId);
-        if(empty($model)) {
+        if (empty($model)) {
             $model = new User();
             $model->openid = $openId;
         }

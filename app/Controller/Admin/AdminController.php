@@ -36,12 +36,10 @@ class AdminController extends IndexController
 
     public function register(LoginRequest $request)
     {
-
         $data = $request->validated();
 
         $result = $this->biz->save($data);
 
         return $this->response->success($result);
     }
-
 }

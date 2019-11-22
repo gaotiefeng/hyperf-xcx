@@ -16,23 +16,18 @@ use Hyperf\DbConnection\Model\Model;
 
 /**
  * @property int $id
- * @property string $openid
- * @property string $session_key
- * @property string $nickName
- * @property string $avatarUrl
- * @property string $province
- * @property string $city
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class User extends Model
+class RemarkType extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'remark_type';
 
     /**
      * The attributes that are mass assignable.
