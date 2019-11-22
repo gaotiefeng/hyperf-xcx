@@ -17,6 +17,8 @@ Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@i
 Router::addServer('http', function () {
     Router::get('/user/login', 'App\Controller\Xcx\UserController@login');
     Router::get('/user/info', 'App\Controller\Xcx\UserController@info');
+    Router::get('/remark/index', 'App\Controller\Xcx\RemarkController@index');
+    Router::post('/remark/save', 'App\Controller\Xcx\RemarkController@save');
 });
 
 Router::addServer('admin', function () {
