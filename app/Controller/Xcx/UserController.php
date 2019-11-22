@@ -59,10 +59,10 @@ class UserController extends IndexController
 
     public function info()
     {
-        $data = $this->request->all();
+        $userInfo = $this->request->input('userInfo');
         $openId = $this->request->input('openid');
 
-        $result = $this->biz->userSave($openId, $data);
+        $result = $this->biz->userSave($openId, $userInfo);
 
         return $result;
     }
