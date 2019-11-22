@@ -18,7 +18,7 @@ use App\Services\Services;
 
 class RemarkBiz extends Services
 {
-    public function index(string $openId, int $offset, int $limit)
+    public function index(string $openId, $offset, $limit)
     {
         $model = Remark::query();
 

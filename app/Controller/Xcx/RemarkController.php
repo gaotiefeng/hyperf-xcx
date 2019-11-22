@@ -28,7 +28,7 @@ class RemarkController extends IndexController
     {
         $openId = $this->request->input('openid');
         $offset = $this->request->input('offset', 0);
-        $limit = $this->request->input('limit', 0);
+        $limit = $this->request->input('limit', 10);
 
         $result = $this->biz->index($openId, $offset, $limit);
 
