@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use Hyperf\Contract\StdoutLoggerInterface;
 use Psr\Container\ContainerInterface;
 
 class Services
@@ -21,8 +22,15 @@ class Services
      */
     protected $container;
 
+    /**
+     * @var StdoutLoggerInterface
+     */
+    protected $logger;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        //$this->logger = di()->get(StdoutLoggerInterface::class);
+        $this->logger = $container->get(StdoutLoggerInterface::class);
     }
 }

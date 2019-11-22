@@ -9,7 +9,10 @@ use App\Job\UserJob;
 use App\Services\Biz\Xcx\UserBiz;
 use App\Services\Client\UserClient;
 use EasyWeChat\Factory;
+use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Annotation\Inject;
+use Hyperf\Framework\Logger\StdoutLogger;
+use Hyperf\Logger\LoggerFactory;
 
 class UserController extends IndexController
 {
@@ -61,8 +64,14 @@ class UserController extends IndexController
     {
         $userInfo = $this->request->input('userInfo');
         $openId = $this->request->input('openid');
-var_dump($userInfo);
-        $result = $this->biz->userSave($openId, $userInfo);
+
+        $data = json_decode($userInfo,true);
+
+        if(!$data) {
+            di()->get(StdoutLoggerInterface::class)->error("json_last_error".json_last_error());
+        }
+
+        $result = $this->biz->userSave($openId, $data);
 
         return $result;
     }
