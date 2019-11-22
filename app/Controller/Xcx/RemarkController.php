@@ -1,6 +1,14 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
 
 namespace App\Controller\Xcx;
 
@@ -11,7 +19,7 @@ use Hyperf\Di\Annotation\Inject;
 class RemarkController extends IndexController
 {
     /**
-     * @Inject()
+     * @Inject
      * @var RemarkBiz
      */
     protected $biz;
@@ -19,8 +27,8 @@ class RemarkController extends IndexController
     public function index()
     {
         $openId = $this->request->input('openid');
-        $offset = $this->request->input('offset',0);
-        $limit = $this->request->input('limit',0);
+        $offset = $this->request->input('offset', 0);
+        $limit = $this->request->input('limit', 0);
 
         $result = $this->biz->index($openId, $offset, $limit);
 
