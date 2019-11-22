@@ -6,11 +6,18 @@ namespace App\Controller\Xcx;
 
 use App\Controller\IndexController;
 use App\Job\UserJob;
+use App\Services\Biz\Xcx\UserBiz;
 use App\Services\Client\UserClient;
 use EasyWeChat\Factory;
+use Hyperf\Di\Annotation\Inject;
 
 class UserController extends IndexController
 {
+    /**
+     * @Inject()
+     * @var UserBiz
+     */
+    protected $biz;
 
     /**
      * xcx 登陆地址 https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
@@ -53,6 +60,10 @@ class UserController extends IndexController
     public function info()
     {
         $data = $this->request->all();
-        return $data;
+        $openId = $this->request->input('openid');
+
+        $result = $this->biz->userSave($openId, $data);
+
+        return $result;
     }
 }

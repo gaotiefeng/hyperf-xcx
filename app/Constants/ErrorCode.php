@@ -49,4 +49,9 @@ class ErrorCode extends AbstractConstants
      * @Message("参数错误！")
      */
     const PARAMETER_ERROR = 15000;
+
+    /**
+     * @Message("用户不存在！")
+     */
+    const OPENID_NOT_EXISTS = 24040;
 }
