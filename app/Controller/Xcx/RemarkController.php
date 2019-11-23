@@ -32,7 +32,7 @@ class RemarkController extends IndexController
 
         [$count, $items] = $this->biz->index($openId, $offset, $limit);
 
-        $result = ['count'=>$count , 'items'=>$items];
+        $result = ['count' => $count, 'items' => $items];
 
         return $this->response->success($result);
     }
@@ -45,5 +45,4 @@ class RemarkController extends IndexController
 
         return $this->response->success($result);
     }
-
 }
