@@ -31,6 +31,7 @@ class RemarkBiz extends Services
     {
         $model = new Remark();
 
+        $model->money = $data['money'] * 100;
         $model->openid = $data['openid'];
         $model->type_id = $data['type'];
         $model->remark = $data['content'];
