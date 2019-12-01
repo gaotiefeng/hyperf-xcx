@@ -20,6 +20,7 @@ use Hyperf\DbConnection\Model\Model;
  * @property string $remark
  * @property int $user_id
  * @property string $openid
+ * @property int $money
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
@@ -44,5 +45,5 @@ class Remark extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'int', 'type_id' => 'integer', 'user_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'int', 'type_id' => 'integer', 'user_id' => 'integer', 'money' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }

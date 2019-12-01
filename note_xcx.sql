@@ -7,7 +7,7 @@
 #
 # Host: 139.9.164.21 (MySQL 5.5.60-MariaDB)
 # Database: note_xcx
-# Generation Time: 2019-11-22 14:17:44 +0000
+# Generation Time: 2019-12-01 12:46:36 +0000
 # ************************************************************
 
 
@@ -23,6 +23,8 @@ SET NAMES utf8mb4;
 
 # Dump of table admin
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `admin`;
 
 CREATE TABLE `admin` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -40,20 +42,29 @@ CREATE TABLE `admin` (
 # Dump of table remark
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `remark`;
+
 CREATE TABLE `remark` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT,
   `type_id` int(11) DEFAULT NULL,
   `remark` text,
   `user_id` int(11) DEFAULT NULL,
   `openid` varchar(64) DEFAULT NULL,
+  `money` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `remark` WRITE;
+/*!40000 ALTER TABLE `remark` DISABLE KEYS */;
+
+
 
 # Dump of table remark_type
 # ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `remark_type`;
 
 CREATE TABLE `remark_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -68,6 +79,8 @@ CREATE TABLE `remark_type` (
 # Dump of table user
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `openid` varchar(64) DEFAULT NULL,
@@ -81,6 +94,9 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `openid` (`openid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
 
 
 
