@@ -22,4 +22,11 @@ return  [
         'level' => 'debug',
         'file' => BASE_PATH . '/runtime/xcx/wechat.log',
     ],
+
+    'client' => [
+        'uri' => 'https://api.weixin.qq.com',
+        'template_id' => [
+            'remark_id' => 'jKuq4vYRjVhCSSW0i6ApPpDEVhXJol0XuH4cvg4fSN4',
+        ],
+    ]
 ];

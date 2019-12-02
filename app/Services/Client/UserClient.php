@@ -13,38 +13,64 @@ declare(strict_types=1);
 namespace App\Services\Client;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use Hyperf\Config\Annotation\Value;
 use Hyperf\Guzzle\HandlerStackFactory;
 
 class UserClient
 {
-    public function client($accessToken, $openId)
-    {
-        $client = $this->reload();
+    /**
+     * @var HandlerStack
+     */
+    protected $stack;
 
-        $params = [
-            'access_token' => $accessToken,
-            'openid' => $openId,
-            'transaction_id' => '',
-        ];
-        // TODO get ['query' => []]  post ['form_params' => $params]
-        return $client->get('/wxa/getpaidunionid', ['query' => $params])->getBody()->getContents();
+    /**
+     * @Value(key="xcx.client.uri")
+     */
+    protected $uri;
+
+    /**
+     * @Value(key="xcx.client.template_id.remark_id")
+     */
+    protected $remarkId;
+
+    protected function getStack()
+    {
+        if ($this->stack instanceof HandlerStack) {
+            return $this->stack;
+        }
+
+        return $this->stack = di()->get(HandlerStackFactory::class)->create();
     }
 
     protected function reload()
     {
-        $factory = new HandlerStackFactory();
-
-        $option = [
-            'max_connections' => 50,
-        ];
-
-        $stack = $factory->create($option);
 
         return make(Client::class, [
             'config' => [
-                'base_uri' => 'https://api.weixin.qq.com/',
-                'handler' => $stack,
+                'base_uri' => $this->uri,
+                'handler' => $this->getStack(),
             ],
         ]);
     }
+
+    public function client($accessToken, $openId, $formId)
+    {
+        $client = $this->reload();
+            $params = [
+                'access_token' => $accessToken,
+                'touser' => $openId,
+                'template_id' => $this->remarkId,
+                'form_id' => $formId,
+                'page' => 'index',
+                'data' => [
+                    'keyword1' => ['value'=>'keyword1'],
+                    'keyword2' => ['value'=>'keyword2']
+                ],
+            ];
+        // TODO get ['query' => []]  post ['form_params' => $params]
+        return $client->get('/cgi-bin/message/wxopen/template/send', ['query' => $params])->getBody()->getContents();
+    }
+
+
 }

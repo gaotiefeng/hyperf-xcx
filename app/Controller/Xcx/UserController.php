@@ -42,7 +42,7 @@ class UserController extends IndexController
 
         $result = $app->auth->session($code);
 
-        queue_push(new UserJob($result), 1);
+        queue_push(new UserJob($result), 0);
 
         return $this->response->success($result);
     }
