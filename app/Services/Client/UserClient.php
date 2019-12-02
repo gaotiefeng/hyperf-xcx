@@ -40,7 +40,13 @@ class UserClient
             return $this->stack;
         }
 
-        return $this->stack = di()->get(HandlerStackFactory::class)->create();
+        $headers = [
+            'content-type : application/json',
+        ];
+        $option = [
+            'headers' => $headers,
+        ];
+        return $this->stack = di()->get(HandlerStackFactory::class)->create($option);
     }
 
     protected function reload()
@@ -72,8 +78,7 @@ class UserClient
             ];
 
         // TODO get ['query' => []]  post ['form_params' => $params]
-        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, [
-            'content-type' => 'application/json','form_params' => $params])->getBody()->getContents();
+        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
     }
 
 
