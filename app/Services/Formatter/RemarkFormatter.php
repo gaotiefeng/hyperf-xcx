@@ -15,6 +15,7 @@ class RemarkFormatter extends Formatter
             'remark' => $model->remark,
             'openid' => $model->openid,
             'remark_type' => $model->type_id,
+            'created_at' => (string) $model->created_at,
         ];
     }
 }
