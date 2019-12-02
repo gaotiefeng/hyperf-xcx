@@ -40,11 +40,7 @@ class UserClient extends Services
         if ($this->stack instanceof HandlerStack) {
             return $this->stack;
         }
-        $headers = array("Content-type: application/json;charset=UTF-8","Accept: application/json","Cache-Control: no-cache", "Pragma: no-cache");
-        $option = [
-            'headers' => $headers,
-        ];
-        return $this->stack = di()->get(HandlerStackFactory::class)->create($option);
+        return $this->stack = di()->get(HandlerStackFactory::class)->create();
     }
 
     protected function reload()
@@ -54,6 +50,8 @@ class UserClient extends Services
             'config' => [
                 'base_uri' => $this->uri,
                 'handler' => $this->getStack(),
+                'headers' => array("Content-type: application/json;charset=UTF-8","Accept: application/json","Cache-Control: no-cache", "Pragma: no-cache"),
+
             ],
         ]);
     }
@@ -74,6 +72,7 @@ class UserClient extends Services
 
         $this->logger->info(json_encode($params));
         // TODO get ['query' => []]  post ['form_params' => $params]
+
         $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
 
         $this->logger->info('Template info');
