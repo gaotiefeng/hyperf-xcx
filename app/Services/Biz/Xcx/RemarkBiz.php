@@ -45,6 +45,7 @@ class RemarkBiz extends Services
         $model->type_id = $data['type'];
         $model->remark = $data['content'];
 
-        return $model->save();
+        $model->save();
+        return $model;
     }
 }

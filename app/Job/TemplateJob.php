@@ -24,6 +24,6 @@ class TemplateJob extends Job
         $openId = $data['openid'];
         $formId = $data['formId'];
 
-        di()->get(UserClient::class)->client($accessToken, $openId, $formId);
+        di()->get(UserClient::class)->client($accessToken, $openId, $formId,$data);
     }
 }

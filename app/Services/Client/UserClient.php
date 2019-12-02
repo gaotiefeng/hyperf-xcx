@@ -57,7 +57,7 @@ class UserClient extends Services
             ],
         ]);
     }
-    public function client($accessToken, $openId, $formId)
+    public function client($accessToken, $openId, $formId, array $data)
 
     {
         $client = $this->reload();
@@ -68,23 +68,20 @@ class UserClient extends Services
             'form_id' => $formId,
             'page' => 'index',
             'data' => [
-                'keyword1' => '12122',
-                'keyword2' => '12122',
-                'keyword3' => '12122',
-                'keyword4' => '12122',
-                'keyword5' => '12122',
+                'keyword1' => ['value' => $data['money']],
+                'keyword2' => ['value' => $data['created_at']],
+                'keyword3' => ['value' => $data['nickName']],
+                'keyword4' => ['value' => $data['created_at']],
+                'keyword5' => ['value' => $data['remark']],
             ],
         ];
 
-        $config = config('xcx');
-        $app = Factory::miniProgram($config);
+        //$config = config('xcx');
+        //$app = Factory::miniProgram($config);
+        //$res = $app->template_message->send($params);
+        //$this->logger->info(json_encode($res));
 
-        $res = $app->template_message->send($params);
-
-        $this->logger->info(json_encode($res));
-
-        $this->logger->info(json_encode($params));
-        // TODO get ['query' => []]  post ['form_params' => $params]
+        // TODO get ['query' => []]  post ['form_params' => $params 'json'=>]
 
         $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['json' => $params])->getBody()->getContents();
 

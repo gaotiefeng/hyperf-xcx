@@ -15,9 +15,11 @@ namespace App\Controller\Xcx;
 use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Job\TemplateJob;
+use App\Model\User;
 use App\Request\Xcx\RemarkRequest;
 use App\Services\Biz\Xcx\RemarkBiz;
 use App\Services\Client\UserClient;
+use App\Services\Dao\UserDao;
 use Hyperf\Di\Annotation\Inject;
 
 class RemarkController extends IndexController
@@ -45,13 +47,20 @@ class RemarkController extends IndexController
 
         $result = $this->biz->save($input);
 
-        $accessToken = di()->get(UserController::class)->getToken();
-        $openId = $input['openid'];
-        $formId = $input['formId'];
-
-        //$result = di()->get(UserClient::class)->client($accessToken, $openId, $formId);
-
-        queue_push(new TemplateJob($input),2);
+        /** @var User $user */
+        $user = di()->get(UserDao::class)->first($input['openid'],false);
+        $userName = '记账';
+        if(!empty($user)) {
+            $userName = $user->nickName;
+        }
+        $template = [
+            'openid' => $result->openid,
+            'money' => $result->money,
+            'created_at' => $result->created_at,
+            'remark' => $result->remark,
+            'nickName' => $userName,
+        ];
+        queue_push(new TemplateJob($template),2);
 
         return $this->response->success($result);
     }
