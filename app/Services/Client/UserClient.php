@@ -36,6 +36,11 @@ class UserClient extends Services
      */
     protected $remarkId;
 
+    /**
+     * @Value(key="xcx.client.template_id.page")
+     */
+    protected $page;
+
     protected function getStack()
     {
         if ($this->stack instanceof HandlerStack) {
@@ -66,7 +71,7 @@ class UserClient extends Services
             'touser' => $openId,
             'template_id' => $this->remarkId,
             'form_id' => $formId,
-            'page' => 'index',
+            'page' => $this->page,
             'data' => [
                 'keyword1' => ['value' => $data['money']],
                 'keyword2' => ['value' => $data['created_at']],

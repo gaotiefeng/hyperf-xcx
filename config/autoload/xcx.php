@@ -27,6 +27,7 @@ return  [
         'uri' => 'https://api.weixin.qq.com',
         'template_id' => [
             'remark_id' => 'jKuq4vYRjVhCSSW0i6ApPpDEVhXJol0XuH4cvg4fSN4',
+            'page' => 'pages/index/index',
         ],
     ]
 ];
