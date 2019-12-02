@@ -69,7 +69,7 @@ class UserClient
                 'emphasis_keyword' => 'keyword1',
             ];
         // TODO get ['query' => []]  post ['form_params' => $params]
-        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['query' => $params])->getBody()->getContents();
+        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
     }
 
 
