@@ -53,8 +53,8 @@ class UserClient
             ],
         ]);
     }
-
     public function client($accessToken, $openId, $formId)
+
     {
         $client = $this->reload();
             $params = [

@@ -26,6 +26,7 @@ class RemarkRequest extends FormRequest
             'openid' => 'required',
             'type' => 'integer | required',
             'content' => '',
+            'formId' => '',
         ];
     }
 

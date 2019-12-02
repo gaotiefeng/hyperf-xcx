@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller\Xcx;
 
 use App\Controller\IndexController;
+use App\Job\TemplateJob;
 use App\Request\Xcx\RemarkRequest;
 use App\Services\Biz\Xcx\RemarkBiz;
 use Hyperf\Di\Annotation\Inject;
@@ -41,6 +42,8 @@ class RemarkController extends IndexController
         $input = $request->validated();
 
         $result = $this->biz->save($input);
+
+        queue_push(new TemplateJob($input),2);
 
         return $this->response->success($result);
     }
