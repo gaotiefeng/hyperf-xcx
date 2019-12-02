@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller\Xcx;
 
 use App\Controller\IndexController;
+use App\Request\Xcx\RemarkRequest;
 use App\Services\Biz\Xcx\RemarkBiz;
 use Hyperf\Di\Annotation\Inject;
 
@@ -37,9 +38,9 @@ class RemarkController extends IndexController
         return $this->response->success($result);
     }
 
-    public function save()
+    public function save(RemarkRequest $request)
     {
-        $input = $this->request->all();
+        $input = $request->validated();
 
         $result = $this->biz->save($input);
 
