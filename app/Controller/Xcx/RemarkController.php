@@ -49,10 +49,9 @@ class RemarkController extends IndexController
         $openId = $input['openid'];
         $formId = $input['formId'];
 
-        $result = di()->get(UserClient::class)->client($accessToken, $openId, $formId);
-        $this->logger->info('Template info');
-        $this->logger->info(json_encode($result));
-        //queue_push(new TemplateJob($input),2);
+        //$result = di()->get(UserClient::class)->client($accessToken, $openId, $formId);
+
+        queue_push(new TemplateJob($input),2);
 
         return $this->response->success($result);
     }
