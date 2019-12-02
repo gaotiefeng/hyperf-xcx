@@ -50,8 +50,9 @@ class UserClient extends Services
             'config' => [
                 'base_uri' => $this->uri,
                 'handler' => $this->getStack(),
-                'headers' => array("Content-type: application/json;charset=UTF-8","Accept: application/json","Cache-Control: no-cache", "Pragma: no-cache"),
-
+                'headers' => [
+                    'Content-type' => 'application/json',
+                    ]
             ],
         ]);
     }
