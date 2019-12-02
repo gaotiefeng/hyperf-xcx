@@ -57,7 +57,7 @@ class RemarkController extends IndexController
             'formId' => $input['formId'],
             'openid' => $result->openid,
             'money' => $result->money / 100,
-            'created_at' => $result->created_at,
+            'created_at' => (string)$result->created_at,
             'remark' => $result->remark,
             'nickName' => $userName,
         ];
