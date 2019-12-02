@@ -32,7 +32,7 @@ class RemarkTypeBiz extends Services
         $result['count'] = $count;
         $result['items'] = [];
         foreach ($items as $item) {
-            $result['items'] = RemarkTypeFormatter::instance()->base($item);
+            $result['items'][] = RemarkTypeFormatter::instance()->base($item);
         }
 
         return $result;
