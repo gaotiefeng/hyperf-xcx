@@ -10,9 +10,14 @@ class RemarkTypeFormatter extends Formatter
 {
     public function base(RemarkType $model)
     {
-        return [
+        $result = [
             'id' => $model->id,
             'name' => $model->name,
         ];
+        if($model->display == 1) {
+            $result['checked'] = true;
+        }
+
+        return $result;
     }
 }
