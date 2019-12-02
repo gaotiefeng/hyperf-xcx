@@ -59,14 +59,13 @@ class UserClient
         $client = $this->reload();
             $params = [
                 'touser' => $openId,
-                'template_id' => $this->remarkId,
-                'form_id' => $formId,
+                'templateId' => $this->remarkId,
+                'formId' => $formId,
                 'page' => 'index',
                 'data' => [
                     'keyword1' => ['value'=>'keyword1'],
                     'keyword2' => ['value'=>'keyword2']
                 ],
-                'emphasis_keyword' => 'keyword1',
             ];
         // TODO get ['query' => []]  post ['form_params' => $params]
         return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
