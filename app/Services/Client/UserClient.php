@@ -58,7 +58,7 @@ class UserClient extends Services
 
     {
         $client = $this->reload();
-        $data = '"data":{
+        $data = '{
             "keyword5":{
                 "value":"2019-03-28"
             },
