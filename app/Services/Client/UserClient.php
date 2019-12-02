@@ -86,7 +86,7 @@ class UserClient extends Services
         $this->logger->info(json_encode($params));
         // TODO get ['query' => []]  post ['form_params' => $params]
 
-        $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
+        $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['json' => $params])->getBody()->getContents();
 
         $this->logger->info('Template info');
         $this->logger->info(json_encode($result));
