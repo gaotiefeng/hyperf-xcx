@@ -69,7 +69,7 @@ class UserClient
                 ],
             ];
         // TODO get ['query' => []]  post ['form_params' => $params]
-        return $client->get('/cgi-bin/message/wxopen/template/send', ['query' => $params])->getBody()->getContents();
+        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['query' => $params])->getBody()->getContents();
     }
 
 
