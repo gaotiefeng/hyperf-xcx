@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Services\Biz\Xcx;
 
 use App\Services\Dao\RemarkTypeDao;
+use App\Services\Formatter\RemarkTypeFormatter;
 use App\Services\Services;
 use Hyperf\Di\Annotation\Inject;
 
@@ -26,6 +27,14 @@ class RemarkTypeBiz extends Services
 
     public function list($offset, $limit)
     {
-        return $this->dao->list($offset, $limit);
+        [$count, $items] = $this->dao->list($offset, $limit);
+
+        $result['count'] = $count;
+        $result['items'] = [];
+        foreach ($items as $item) {
+            $result['items'] = RemarkTypeFormatter::instance()->base($item);
+        }
+
+        return $result;
     }
 }
