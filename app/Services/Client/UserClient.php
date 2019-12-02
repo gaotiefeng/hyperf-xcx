@@ -63,9 +63,14 @@ class UserClient
                 'formId' => $formId,
                 'page' => 'index',
                 'data' => [
-                    'keyword1.DATA' => ['value'=>'keyword1'],
+                    'keyword1' => ['value'=>'keyword1'],
+                    'keyword2' => ['value'=>'keyword2'],
+                    'keyword3' => ['value'=>'keyword33'],
+                    'keyword4' => ['value'=>'keyword4'],
+                    'keyword5' => ['value'=>'keyword5'],
                 ],
             ];
+            $params = json_encode($params);
         // TODO get ['query' => []]  post ['form_params' => $params]
         return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
     }
