@@ -62,33 +62,18 @@ class UserClient
                 'template_id' => $this->remarkId,
                 'form_id' => $formId,
                 'page' => 'index',
+                'data' => [
+                    'keyword1' => ['value'=>'keyword1'],
+                    'keyword2' => ['value'=>'keyword2'],
+                    'keyword3' => ['value'=>'keyword33'],
+                    'keyword4' => ['value'=>'keyword4'],
+                    'keyword5' => ['value'=>'keyword5'],
+                ],
             ];
-            /*$params = '{
-                "touser": '.$openId.',
-                "templateId": '.$this->remarkId.',
-                "page": "index",
-                "formId": '.$formId.',
-                "data": {
-                        "keyword1": {
-                            "value": "申请已经通过了，快去看看吧。",
-                        "color": "#173177"
-                    },
-                    "keyword2": {
-                            "value": "西藏",
-                        "color": "#173177"
-                    },
-                    "keyword3": {
-                            "value": "中三班",
-                        "color": "#173177"
-                    },
-                    "keyword4": {
-                            "value": "马三",
-                        "color": "#173177"
-                    }
-                }
-            }';*/
+
         // TODO get ['query' => []]  post ['form_params' => $params]
-        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
+        return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, [
+            'content-type' => 'application/json','form_params' => $params])->getBody()->getContents();
     }
 
 
