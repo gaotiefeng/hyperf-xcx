@@ -64,7 +64,10 @@ class UserClient
                 'page' => 'index',
                 'data' => [
                     'keyword1' => ['value'=>'keyword1'],
-                    'keyword2' => ['value'=>'keyword2']
+                    'keyword2' => ['value'=>'keyword2'],
+                    'keyword3' => ['value'=>'keyword33'],
+                    'keyword4' => ['value'=>'keyword4'],
+                    'keyword5' => ['value'=>'keyword5'],
                 ],
             ];
         // TODO get ['query' => []]  post ['form_params' => $params]
