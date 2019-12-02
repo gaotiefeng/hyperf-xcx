@@ -67,7 +67,11 @@ class UserClient extends Services
             'form_id' => $formId,
             'page' => 'index',
             'data' => [
-                'keyword2' => ['value' =>'122112']
+                'keyword1' => '12122',
+                'keyword2' => '12122',
+                'keyword3' => '12122',
+                'keyword4' => '12122',
+                'keyword5' => '12122',
             ],
         ];
 
