@@ -61,7 +61,7 @@ class RemarkController extends IndexController
             'remark' => $result->remark,
             'nickName' => $userName,
         ];
-        queue_push(new TemplateJob($template),2);
+        queue_push(new TemplateJob($template),0);
 
         return $this->response->success($result);
     }
