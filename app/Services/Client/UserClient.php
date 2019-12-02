@@ -57,10 +57,10 @@ class UserClient
 
     {
         $client = $this->reload();
-            /*$params = [
+            $params = [
                 'touser' => $openId,
-                'templateId' => $this->remarkId,
-                'formId' => $formId,
+                'template_id' => $this->remarkId,
+                'form_id' => $formId,
                 'page' => 'index',
                 'data' => [
                     'keyword1' => ['value'=>'keyword1'],
@@ -69,8 +69,8 @@ class UserClient
                     'keyword4' => ['value'=>'keyword4'],
                     'keyword5' => ['value'=>'keyword5'],
                 ],
-            ];*/
-            $params = '{
+            ];
+            /*$params = '{
                 "touser": '.$openId.',
                 "templateId": '.$this->remarkId.',
                 "page": "index",
@@ -93,7 +93,7 @@ class UserClient
                         "color": "#173177"
                     }
                 }
-            }';
+            }';*/
         // TODO get ['query' => []]  post ['form_params' => $params]
         return $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['form_params' => $params])->getBody()->getContents();
     }
