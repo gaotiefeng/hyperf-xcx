@@ -54,7 +54,7 @@ class RemarkController extends IndexController
             $userName = $user->nickName;
         }
         $template = [
-            'formId' => $input->formId,
+            'formId' => $input['formId'],
             'openid' => $result->openid,
             'money' => $result->money,
             'created_at' => $result->created_at,
