@@ -24,7 +24,7 @@ class RemarkRequest extends FormRequest
         return [
             'money' => '',
             'openid' => 'required',
-            'type' => 'integer,required',
+            'type' => 'integer | required',
             'content' => '',
         ];
     }
@@ -34,7 +34,7 @@ class RemarkRequest extends FormRequest
         return [
             'openid.required' => '用户未登陆',
             'type.integer' => '类型格式错误',
-            'type.required' => '类型必填',
+            'type.require' => '类型必填',
         ];
     }
 }

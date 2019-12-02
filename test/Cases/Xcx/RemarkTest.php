@@ -22,4 +22,16 @@ class RemarkTest extends \HyperfTest\HttpTestCase
 
         $this->assertSame(0, $res['code']);
     }
+
+    public function testXcxRemarkSave()
+    {
+        $res = $this->client->post('/remark/save', [
+            'money' => 110,
+            'type' => 1,
+            'openid' => 'oCID10O8mXhkB2StEjNrL9wytUcU',
+            'content' => '衣服',
+        ]);
+
+        $this->assertSame(0, $res['code']);
+    }
 }
