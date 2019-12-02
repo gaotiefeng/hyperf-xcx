@@ -16,6 +16,7 @@ use App\Controller\IndexController;
 use App\Job\TemplateJob;
 use App\Request\Xcx\RemarkRequest;
 use App\Services\Biz\Xcx\RemarkBiz;
+use App\Services\Client\UserClient;
 use Hyperf\Di\Annotation\Inject;
 
 class RemarkController extends IndexController
@@ -43,7 +44,12 @@ class RemarkController extends IndexController
 
         $result = $this->biz->save($input);
 
-        queue_push(new TemplateJob($input),2);
+        $accessToken = di()->get(UserController::class)->getToken();
+        $openId = $input['openid'];
+        $formId = $input['formId'];
+
+        di()->get(UserClient::class)->client($accessToken, $openId, $formId);
+        //queue_push(new TemplateJob($input),2);
 
         return $this->response->success($result);
     }
