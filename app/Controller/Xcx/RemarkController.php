@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
+use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Job\TemplateJob;
 use App\Request\Xcx\RemarkRequest;
@@ -49,8 +50,8 @@ class RemarkController extends IndexController
         $formId = $input['formId'];
 
         $result = di()->get(UserClient::class)->client($accessToken, $openId, $formId);
-        $this->logger('Template info');
-        $this->logger(json_encode($result));
+        $this->logger->info('Template info');
+        $this->logger->info(json_encode($result));
         //queue_push(new TemplateJob($input),2);
 
         return $this->response->success($result);
