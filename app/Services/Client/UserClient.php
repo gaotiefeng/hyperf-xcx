@@ -62,13 +62,6 @@ class UserClient
                 'template_id' => $this->remarkId,
                 'form_id' => $formId,
                 'page' => 'index',
-                'data' => [
-                    'keyword1' => ['value'=>'keyword1'],
-                    'keyword2' => ['value'=>'keyword2'],
-                    'keyword3' => ['value'=>'keyword33'],
-                    'keyword4' => ['value'=>'keyword4'],
-                    'keyword5' => ['value'=>'keyword5'],
-                ],
             ];
             /*$params = '{
                 "touser": '.$openId.',
