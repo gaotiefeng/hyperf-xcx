@@ -31,9 +31,7 @@ class RemarkController extends IndexController
         $offset = $this->request->input('offset', 0);
         $limit = $this->request->input('limit', 10);
 
-        [$count, $items] = $this->biz->index($openId, $offset, $limit);
-
-        $result = ['count' => $count, 'items' => $items];
+        $result = $this->biz->index($openId, $offset, $limit);
 
         return $this->response->success($result);
     }

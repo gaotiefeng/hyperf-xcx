@@ -6,7 +6,7 @@ namespace App\Services\Formatter;
 
 use App\Model\Remark;
 
-class RemarkFormatter
+class RemarkFormatter extends Formatter
 {
     public function base(Remark $model)
     {

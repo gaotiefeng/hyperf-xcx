@@ -14,6 +14,7 @@ namespace App\Services\Biz\Xcx;
 
 use App\Kernel\Helper\ModelHelper;
 use App\Model\Remark;
+use App\Services\Formatter\RemarkFormatter;
 use App\Services\Services;
 
 class RemarkBiz extends Services
@@ -24,7 +25,15 @@ class RemarkBiz extends Services
 
         $model->where('openid', '=', $openId);
 
-        return ModelHelper::pagination($model, $offset, $limit);
+        [$count, $items] =  ModelHelper::pagination($model, $offset, $limit);
+
+        $result['count'] = $count;
+        $result['items'] = [];
+        foreach ($items as $item) {
+            $result['items'][] = RemarkFormatter::instance()->base($item);
+        }
+
+        return $result;
     }
 
     public function save(array $data)
