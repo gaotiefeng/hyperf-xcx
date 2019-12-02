@@ -32,11 +32,8 @@ class UserDao extends Services
 
     public function save(string $openId, array $data)
     {
-        $model = $this->first($openId);
-        if (empty($model)) {
-            $model = new User();
-            $model->openid = $openId;
-        }
+        $model = $this->first($openId, true);
+
         $model->nickName = $data['nickName'];
         $model->avatarUrl = $data['avatarUrl'];
         $model->city = $data['city'];
