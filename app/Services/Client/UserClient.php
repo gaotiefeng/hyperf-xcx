@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Services\Client;
 
 use App\Services\Services;
+use EasyWeChat\Factory;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Hyperf\Config\Annotation\Value;
@@ -74,6 +75,13 @@ class UserClient extends Services
                 'keyword5' => '12122',
             ],
         ];
+
+        $config = config('xcx');
+        $app = Factory::miniProgram($config);
+
+        $res = $app->template_message->send($params);
+
+        $this->logger->info(json_encode($res));
 
         $this->logger->info(json_encode($params));
         // TODO get ['query' => []]  post ['form_params' => $params]
