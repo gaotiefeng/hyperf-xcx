@@ -30,7 +30,8 @@ class RemarkBiz extends Services
         $result['count'] = $count;
         $result['items'] = [];
         foreach ($items as $item) {
-            $result['items'][] = RemarkFormatter::instance()->base($item);
+            /** @var Remark $item */
+            $result['items'][] = RemarkFormatter::instance()->detail($item, $item->remarkType);
         }
 
         return $result;

@@ -18,4 +18,13 @@ class RemarkFormatter extends Formatter
             'created_at' => (string) $model->created_at,
         ];
     }
+
+    public function detail(Remark $model, $remarkType)
+    {
+        $result = $this->base($model);
+
+        $result['remark_type'] = RemarkTypeFormatter::instance()->base($remarkType);
+
+        return $result;
+    }
 }
