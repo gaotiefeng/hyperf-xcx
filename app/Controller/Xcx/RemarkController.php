@@ -12,13 +12,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
-use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Job\TemplateJob;
 use App\Model\User;
 use App\Request\Xcx\RemarkRequest;
 use App\Services\Biz\Xcx\RemarkBiz;
-use App\Services\Client\UserClient;
 use App\Services\Dao\UserDao;
 use Hyperf\Di\Annotation\Inject;
 
@@ -48,20 +46,20 @@ class RemarkController extends IndexController
         $result = $this->biz->save($input);
 
         /** @var User $user */
-        $user = di()->get(UserDao::class)->first($input['openid'],false);
+        $user = di()->get(UserDao::class)->first($input['openid'], false);
         $userName = '记账';
-        if(!empty($user)) {
+        if (! empty($user)) {
             $userName = $user->nickName;
         }
         $template = [
             'formId' => $input['formId'],
             'openid' => $result->openid,
             'money' => $result->money / 100,
-            'created_at' => (string)$result->created_at,
+            'created_at' => (string) $result->created_at,
             'remark' => $result->remark,
             'nickName' => $userName,
         ];
-        queue_push(new TemplateJob($template),0);
+        queue_push(new TemplateJob($template), 0);
 
         return $this->response->success($result);
     }

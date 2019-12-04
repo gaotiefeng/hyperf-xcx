@@ -41,29 +41,7 @@ class UserClient extends Services
      */
     protected $page;
 
-    protected function getStack()
-    {
-        if ($this->stack instanceof HandlerStack) {
-            return $this->stack;
-        }
-        return $this->stack = di()->get(HandlerStackFactory::class)->create();
-    }
-
-    protected function reload()
-    {
-
-        return make(Client::class, [
-            'config' => [
-                'base_uri' => $this->uri,
-                'handler' => $this->getStack(),
-                'headers' => [
-                    'Content-type' => 'application/json',
-                    ]
-            ],
-        ]);
-    }
     public function client($accessToken, $openId, $formId, array $data)
-
     {
         $client = $this->reload();
 
@@ -88,7 +66,7 @@ class UserClient extends Services
 
         // TODO get ['query' => []]  post ['form_params' => $params 'json'=>]
 
-        $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token='.$accessToken, ['json' => $params])->getBody()->getContents();
+        $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token=' . $accessToken, ['json' => $params])->getBody()->getContents();
 
         $this->logger->info('Template info');
         $this->logger->info(json_encode($result));
@@ -96,5 +74,24 @@ class UserClient extends Services
         return $result;
     }
 
+    protected function getStack()
+    {
+        if ($this->stack instanceof HandlerStack) {
+            return $this->stack;
+        }
+        return $this->stack = di()->get(HandlerStackFactory::class)->create();
+    }
 
+    protected function reload()
+    {
+        return make(Client::class, [
+            'config' => [
+                'base_uri' => $this->uri,
+                'handler' => $this->getStack(),
+                'headers' => [
+                    'Content-type' => 'application/json',
+                ],
+            ],
+        ]);
+    }
 }

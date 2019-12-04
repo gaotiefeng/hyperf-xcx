@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use EasyWeChat\Factory;
-
 class IndexController extends AbstractController
 {
     public function index()
@@ -26,5 +24,4 @@ class IndexController extends AbstractController
             'message' => "Hello {$user}.",
         ];
     }
-
 }

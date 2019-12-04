@@ -21,16 +21,16 @@ class RemarkBiz extends Services
 {
     public function index(string $openId, $offset, $limit)
     {
-        $model = Remark::query();
+        $model = Remark::query()->orderBy('id', 'desc');
 
         $model->where('openid', '=', $openId);
 
-        [$count, $items] =  ModelHelper::pagination($model, $offset, $limit);
+        [$count, $items] = ModelHelper::pagination($model, $offset, $limit);
 
         $result['count'] = $count;
         $result['items'] = [];
         foreach ($items as $item) {
-            /** @var Remark $item */
+            /* @var Remark $item */
             $result['items'][] = RemarkFormatter::instance()->detail($item, $item->remarkType);
         }
 
