@@ -14,8 +14,12 @@ namespace App\Services\Biz\Xcx;
 
 use App\Kernel\Helper\ModelHelper;
 use App\Model\Remark;
+use App\Model\User;
+use App\Services\Dao\UserDao;
 use App\Services\Formatter\RemarkFormatter;
 use App\Services\Services;
+use Hyperf\DbConnection\Db;
+use Swoole\Exception;
 
 class RemarkBiz extends Services
 {
@@ -39,14 +43,27 @@ class RemarkBiz extends Services
 
     public function save(array $data)
     {
-        $model = new Remark();
+        Db::beginTransaction();
+        try {
+            $model = new Remark();
 
-        $model->money = $data['money'] * 100;
-        $model->openid = $data['openid'];
-        $model->type_id = $data['type'];
-        $model->remark = $data['content'];
+            $model->money = $data['money'] * 100;
+            $model->openid = $data['openid'];
+            $model->type_id = $data['type'];
+            $model->remark = $data['content'];
+            $model->save();
 
-        $model->save();
-        return $model;
+            /** @var User $userModel */
+            $userModel = di(UserDao::class)->first($data['openid'],true);
+            $userModel->money += $data['money'];
+            $userModel->save();
+
+            Db::commit();
+            return true;
+        }catch (Exception $exception){
+            Db::rollBack();
+            $this->logger->error('remark save '.$exception->getMessage());
+            return false;
+        }
     }
 }

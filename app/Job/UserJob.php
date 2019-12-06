@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Job;
 
+use App\Kernel\Snowflake\UserIdGenerator;
 use App\Model\User;
 use Hyperf\AsyncQueue\Job;
 
@@ -34,7 +35,9 @@ class UserJob extends Job
                 $model = new User();
                 $model->openid = $openId;
                 $model->session_key = $data['session_key'];
+                $model->only_id = di()->get(UserIdGenerator::class)->generate($model->id);
                 $model->save();
+
             }
         }
     }
