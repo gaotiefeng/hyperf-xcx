@@ -56,7 +56,7 @@ class RemarkController extends IndexController
             'openid' => $result->openid,
             'money' => $result->money / 100,
             'created_at' => (string) $result->created_at,
-            'remark' => $result->remark,
+            'remark' => $result->remark ?? '',
             'nickName' => $userName,
         ];
         queue_push(new TemplateJob($template), 0);
