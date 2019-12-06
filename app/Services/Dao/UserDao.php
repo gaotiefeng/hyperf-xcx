@@ -38,7 +38,8 @@ class UserDao extends Services
         $model->avatarUrl = $data['avatarUrl'];
         $model->city = $data['city'];
         $model->province = $data['province'];
+        $model->save();
 
-        return $model->save();
+        return $model;
     }
 }

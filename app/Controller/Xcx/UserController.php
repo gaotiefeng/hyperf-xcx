@@ -73,6 +73,8 @@ class UserController extends IndexController
             di()->get(StdoutLoggerInterface::class)->error('json_last_error' . json_last_error());
         }
 
-        return $this->biz->userSave($openId, $data);
+        $result = $this->biz->userSave($openId, $data);
+
+        return $this->response->success($result);
     }
 }
