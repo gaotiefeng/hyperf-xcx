@@ -59,7 +59,7 @@ class RemarkBiz extends Services
             $userModel->save();
 
             Db::commit();
-            return true;
+            return $model;
         }catch (Exception $exception){
             Db::rollBack();
             $this->logger->error('remark save '.$exception->getMessage());
