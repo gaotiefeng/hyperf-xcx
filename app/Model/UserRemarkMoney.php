@@ -32,4 +32,9 @@ class UserRemarkMoney extends Model
      * @var array
      */
     protected $casts = ['id' => 'int', 'type_id' => 'integer', 'money' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function remarkType()
+    {
+        return $this->hasOne(RemarkType::class, 'id', 'type_id');
+    }
 }
