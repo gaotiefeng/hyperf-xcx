@@ -61,12 +61,12 @@ class RemarkBiz extends Services
             }
             $userRemark->openid = $data['openid'];
             $userRemark->type_id = $data['type'];
-            $userRemark->money += $data['money'];
+            $userRemark->money += $data['money'] * 100;
             $userRemark->save();
 
             /** @var User $userModel */
             $userModel = di(UserDao::class)->first($data['openid'],true);
-            $userModel->money += $data['money'];
+            $userModel->money += $data['money'] * 100;
             $userModel->save();
 
             Db::commit();
