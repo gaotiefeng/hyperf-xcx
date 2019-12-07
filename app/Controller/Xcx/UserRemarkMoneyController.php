@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
+use App\Constants\ErrorCode;
 use App\Controller\IndexController;
+use App\Exception\BusinessException;
 use App\Services\Biz\Xcx\UserRemarkMoneyBiz;
 use Hyperf\Di\Annotation\Inject;
 
-class UserRemarkMoney extends IndexController
+class UserRemarkMoneyController extends IndexController
 {
     /**
      * @Inject()
@@ -19,6 +21,10 @@ class UserRemarkMoney extends IndexController
     public function index()
     {
         $openid = $this->request->input('openid');
+
+        if(empty($openid)) {
+            throw new BusinessException(ErrorCode::OPENID_NOT_EXISTS);
+        }
 
         $result = $this->biz->index($openid);
 
