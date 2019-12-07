@@ -20,7 +20,7 @@ class UserRemarkMoney extends IndexController
     {
         $openid = $this->request->input('openid');
 
-        $result = $this->biz->index();
+        $result = $this->biz->index($openid);
 
         return $this->response->success($result);
     }

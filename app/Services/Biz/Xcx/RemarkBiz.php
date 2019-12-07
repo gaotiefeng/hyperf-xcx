@@ -60,7 +60,7 @@ class RemarkBiz extends Services
                 $userRemark = new UserRemarkMoney();
             }
             $userRemark->openid = $data['openid'];
-            $userRemark->type_id = $data['type_id'];
+            $userRemark->type_id = $data['type'];
             $userRemark->money += $data['money'];
             $userRemark->save();
 
