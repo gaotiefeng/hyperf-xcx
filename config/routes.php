@@ -22,6 +22,8 @@ Router::addServer('http', function () {
     Router::post('/remark/save', 'App\Controller\Xcx\RemarkController@save');
 
     Router::get('/remark/type/index', 'App\Controller\Xcx\RemarkTypeController@index');
+
+    Router::get('/user/remark/money/index', 'App\Controller\Xcx\UserRemarkMoneyController@index');
 });
 
 Router::addServer('admin', function () {

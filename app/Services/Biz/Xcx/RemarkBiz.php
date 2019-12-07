@@ -15,7 +15,9 @@ namespace App\Services\Biz\Xcx;
 use App\Kernel\Helper\ModelHelper;
 use App\Model\Remark;
 use App\Model\User;
+use App\Model\UserRemarkMoney;
 use App\Services\Dao\UserDao;
+use App\Services\Dao\UserRemarkMoneyDao;
 use App\Services\Formatter\RemarkFormatter;
 use App\Services\Services;
 use Hyperf\DbConnection\Db;
@@ -52,6 +54,15 @@ class RemarkBiz extends Services
             $model->type_id = $data['type'];
             $model->remark = $data['content'];
             $model->save();
+
+            $userRemark = di(UserRemarkMoneyDao::class)->first($data['openid'], $data['type'],false);
+            if (empty($userRemark)) {
+                $userRemark = new UserRemarkMoney();
+            }
+            $userRemark->openid = $data['openid'];
+            $userRemark->type_id = $data['type_id'];
+            $userRemark->money += $data['money'];
+            $userRemark->save();
 
             /** @var User $userModel */
             $userModel = di(UserDao::class)->first($data['openid'],true);
