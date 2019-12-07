@@ -14,7 +14,7 @@ class UserRemarkMoneyFormatter extends Formatter
             'id' => $model->id,
             'openid' => $model->openid,
             'type_id' => $model->type_id,
-            'money' => $model->money,
+            'money' => $model->money /100,
             'created_at' => (string)$model->created_at,
         ];
     }
