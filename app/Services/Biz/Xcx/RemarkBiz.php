@@ -55,7 +55,7 @@ class RemarkBiz extends Services
             $model->remark = $data['content'];
             $model->save();
 
-            $userRemark = di(UserRemarkMoneyDao::class)->first($data['openid'], $data['type'],false);
+            $userRemark = di(UserRemarkMoneyDao::class)->first($data['openid'], $data['type'], false);
             if (empty($userRemark)) {
                 $userRemark = new UserRemarkMoney();
             }
@@ -65,15 +65,15 @@ class RemarkBiz extends Services
             $userRemark->save();
 
             /** @var User $userModel */
-            $userModel = di(UserDao::class)->first($data['openid'],true);
+            $userModel = di(UserDao::class)->first($data['openid'], true);
             $userModel->money += $data['money'] * 100;
             $userModel->save();
 
             Db::commit();
             return $model;
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             Db::rollBack();
-            $this->logger->error('remark save '.$exception->getMessage());
+            $this->logger->error('remark save ' . $exception->getMessage());
             return false;
         }
     }

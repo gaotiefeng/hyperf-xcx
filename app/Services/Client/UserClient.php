@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace App\Services\Client;
 
 use App\Services\Services;
-use EasyWeChat\Factory;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Hyperf\Config\Annotation\Value;

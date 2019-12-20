@@ -1,6 +1,14 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
 
 namespace App\Controller\Xcx;
 
@@ -13,7 +21,7 @@ use Hyperf\Di\Annotation\Inject;
 class UserRemarkMoneyController extends IndexController
 {
     /**
-     * @Inject()
+     * @Inject
      * @var UserRemarkMoneyBiz
      */
     protected $biz;
@@ -22,7 +30,7 @@ class UserRemarkMoneyController extends IndexController
     {
         $openid = $this->request->input('openid');
 
-        if(empty($openid)) {
+        if (empty($openid)) {
             throw new BusinessException(ErrorCode::OPENID_NOT_EXISTS);
         }
 
