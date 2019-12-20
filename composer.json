@@ -42,7 +42,8 @@
         "firebase/php-jwt": "^5.0",
         "hyperf/validation": "^1.1",
         "overtrue/wechat": "~4.0",
-        "hyperf/snowflake": "^1.1"
+        "hyperf/snowflake": "^1.1",
+        "hyperf/websocket-server": "^1.1"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",

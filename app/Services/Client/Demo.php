@@ -38,7 +38,7 @@ class Demo
             'offset' => 0,
             'limit' => 2,
         ];
-        // TODO get ['query' => []]  post ['form_params' => $params]
+        // TODO get ['query' => []]  post ['form_params' => $params]  post ['form_params' => $params 'json'=>]
         return $client->get('/admin/index', ['query' => $params])->getBody()->getContents();
     }
 }

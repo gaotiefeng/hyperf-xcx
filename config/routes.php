@@ -31,3 +31,7 @@ Router::addServer('admin', function () {
     Router::post('/admin/login', 'App\Controller\Admin\AdminController@login');
     Router::post('/admin/register', 'App\Controller\Admin\AdminController@register');
 });
+
+Router::addServer('ws', function () {
+    Router::get('/', 'App\Controller\WebSocketController');
+});

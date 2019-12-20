@@ -59,13 +59,6 @@ class UserClient extends Services
             ],
         ];
 
-        //$config = config('xcx');
-        //$app = Factory::miniProgram($config);
-        //$res = $app->template_message->send($params);
-        //$this->logger->info(json_encode($res));
-
-        // TODO get ['query' => []]  post ['form_params' => $params 'json'=>]
-
         $result = $client->post('/cgi-bin/message/wxopen/template/send?access_token=' . $accessToken, ['json' => $params])->getBody()->getContents();
 
         $this->logger->info('Template info');
