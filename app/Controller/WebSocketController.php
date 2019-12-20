@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Services\Redis\StringRedis;
+use App\Services\Redis\MessageListRedis;
+use App\Services\Redis\OpenStrRedis;
 use Hyperf\Contract\OnCloseInterface;
 use Hyperf\Contract\OnMessageInterface;
 use Hyperf\Contract\OnOpenInterface;
@@ -18,22 +19,29 @@ class WebSocketController implements OnMessageInterface,OnCloseInterface,OnOpenI
     {
         $get = $request->get;
         $openId = $get['openid'];
-
-        $redis = di()->get(StringRedis::class)->setOpenId($openId,$request->fd);
+        //ws://192.168.20.39:9503?openid=oCID10O8mXhkB2StEjNrL9wytUcU
+        $redis = di()->get(OpenStrRedis::class)->setOpenId($openId,$request->fd);
         if(empty($openId) || !$redis) {
             $openId = 'error';
         }
+        //TODO 推送消息的合理性
+        //$pop = di()->get(MessageListRedis::class)->messagePop($openId);
+        //$data = json_decode($pop,true);
 
-        $server->push($request->fd, 'openid is '.$openId);
+        $server->push($request->fd, 'open is'.$openId);
     }
 
     public function onMessage(Server $server, Frame $frame): void
     {
+        //TODO 接收数据$frame->data
         $openId = 'oCID10O8mXhkB2StEjNrL9wytUcU';
-        $fd = di()->get(StringRedis::class)->getFd($openId);
+        // TODO 发送人
+        $fd = di()->get(OpenStrRedis::class)->getFd($openId);
         $fd = intval($fd);
-        
-        $server->push($fd, $frame->data);
+        //TODO 存储消息
+        $message = di()->get(MessageListRedis::class)->messagePush($openId,$fd,$frame->data);
+
+        $server->push($frame->fd, $frame->data);
     }
 
     public function onClose(\Swoole\Server $server, int $fd, int $reactorId): void

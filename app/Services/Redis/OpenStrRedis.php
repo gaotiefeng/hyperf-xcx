@@ -8,10 +8,10 @@ use Gao\redisApplication\stringApplication;
 use Hyperf\Di\Container;
 use Swoole\Coroutine\Redis;
 
-class StringRedis extends stringApplication
+class OpenStrRedis extends stringApplication
 {
     protected $prefix = "openId";
-    
+
     protected $container;
 
     public function __construct(Container $container)
