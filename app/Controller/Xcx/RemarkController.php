@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
+use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Job\TemplateJob;
 use App\Model\User;
@@ -20,7 +21,7 @@ use App\Services\Biz\Xcx\RemarkBiz;
 use App\Services\Dao\UserDao;
 use Hyperf\Di\Annotation\Inject;
 
-class RemarkController extends IndexController
+class RemarkController extends AbstractController
 {
     /**
      * @Inject

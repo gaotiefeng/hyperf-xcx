@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
+use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Job\UserJob;
 use App\Services\Biz\Xcx\UserBiz;
@@ -19,7 +20,7 @@ use EasyWeChat\Factory;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Annotation\Inject;
 
-class UserController extends IndexController
+class UserController extends AbstractController
 {
     /**
      * @Inject

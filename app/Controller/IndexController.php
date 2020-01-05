@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\View\RenderInterface;
+
 class IndexController extends AbstractController
 {
     public function index()
@@ -23,5 +25,16 @@ class IndexController extends AbstractController
             'method' => $method,
             'message' => "Hello {$user}.",
         ];
+    }
+
+    public function html(RenderInterface $render)
+    {
+        $public = BASE_PATH . '/public/html/';
+        $url = 'http://www.tfuu.cn';
+
+        return $render->render('index', [
+            'url' => $url,
+            'public' => $public,
+        ]);
     }
 }

@@ -12,11 +12,12 @@ declare(strict_types=1);
 
 namespace App\Controller\Xcx;
 
+use App\Controller\AbstractController;
 use App\Controller\IndexController;
 use App\Services\Biz\Xcx\RemarkTypeBiz;
 use Hyperf\Di\Annotation\Inject;
 
-class RemarkTypeController extends IndexController
+class RemarkTypeController extends AbstractController
 {
     /**
      * @Inject

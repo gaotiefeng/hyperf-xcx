@@ -12,7 +12,9 @@ declare(strict_types=1);
 
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+Router::addRoute(['GET', 'POST', 'HEAD'], '/api', 'App\Controller\IndexController@index');
+Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@html');
+
 
 Router::addServer('http', function () {
     Router::get('/user/login', 'App\Controller\Xcx\UserController@login');

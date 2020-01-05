@@ -36,7 +36,7 @@ return [
                 SwooleEvent::ON_REQUEST => ['adminServer', 'onRequest'],
             ],
         ],
-        [
+        /*[
             'name' => 'ws',
             'type' => Server::SERVER_WEBSOCKET,
             'host' => '0.0.0.0',
@@ -47,7 +47,7 @@ return [
                 SwooleEvent::ON_MESSAGE => [Hyperf\WebSocketServer\Server::class, 'onMessage'],
                 SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
             ],
-        ],
+        ],*/
     ],
     'settings' => [
         'enable_coroutine' => true,
@@ -62,10 +62,16 @@ return [
         'document_root' => BASE_PATH . '/public',
         'static_handler_locations' => ['/'],
         'enable_static_handler' => true,
+        // Task Worker 数量，根据您的服务器配置而配置适当的数量
+        'task_worker_num' => 8,
+        // 因为 `Task` 主要处理无法协程化的方法，所以这里推荐设为 `false`，避免协程下出现数据混淆的情况
+        'task_enable_coroutine' => false,
     ],
     'callbacks' => [
         SwooleEvent::ON_BEFORE_START => [Hyperf\Framework\Bootstrap\ServerStartCallback::class, 'beforeStart'],
         SwooleEvent::ON_WORKER_START => [Hyperf\Framework\Bootstrap\WorkerStartCallback::class, 'onWorkerStart'],
         SwooleEvent::ON_PIPE_MESSAGE => [Hyperf\Framework\Bootstrap\PipeMessageCallback::class, 'onPipeMessage'],
-    ],
+        SwooleEvent::ON_TASK => [Hyperf\Framework\Bootstrap\TaskCallback::class, 'onTask'],
+        SwooleEvent::ON_FINISH => [Hyperf\Framework\Bootstrap\FinishCallback::class, 'onFinish'],
+        ],
 ];
