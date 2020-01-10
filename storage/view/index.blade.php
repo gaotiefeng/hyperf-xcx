@@ -65,7 +65,7 @@
             <div class="cd-full-width">
                 <h2>影视与感官</h2>
                 <p>观看生活影片，感受欢天喜地！</p>
-                <a class="cd-btn" href="./html/vip/index.html" target="_blank">查看详情</a>
+                <a class="cd-btn" href="https://gaotiefeng.github.io/ttnote" target="_blank">查看详情</a>
             </div>
         </li>
         <li class="cd-bg-video">
