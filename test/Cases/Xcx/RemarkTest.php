@@ -26,6 +26,7 @@ class RemarkTest extends \HyperfTest\HttpTestCase
     public function testXcxRemarkSave()
     {
         $res = $this->client->post('/remark/save', [
+            'formId' => '1212',
             'money' => 110,
             'type' => 1,
             'openid' => 'oCID10O8mXhkB2StEjNrL9wytUcU',
