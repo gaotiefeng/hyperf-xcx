@@ -33,10 +33,10 @@ before_install:
 
 install:
   - cd $TRAVIS_BUILD_DIR
-  - bash .travis/swoole.install.sh
+  - bash .build/swoole.install.sh
   - phpenv config-rm xdebug.ini || echo "xdebug not available"
-  - phpenv config-add .travis/ci.ini
-  - bash .travis/setup.mysql.sh
+  - phpenv config-add .build/ci.ini
+  - bash .build/setup.mysql.sh
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
