@@ -45,8 +45,8 @@
     <ul class="cd-hero-slider autoplay">
         <li class="selected">
             <div class="cd-half-width">
-                <h2>liu nian</h2>
-                <p>PHP开发攻城狮，随缘、随心</p>
+                <h2>高铁峰</h2>
+                <p>PHP开发，随缘、随心</p>
                 <p>爱旅行、爱折腾、爱生活、爱运动</p>
                 <a class="cd-btn" href="./html/about.html">查看详情</a>
             </div>
