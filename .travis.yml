@@ -38,4 +38,4 @@ before_script:
   - mv .env.example .env
 
 script:
-  - composer testnote_xcx
+  - composer test
