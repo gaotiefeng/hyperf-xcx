@@ -1,5 +1,5 @@
-# 基于[Hyperf](https://doc.hyperf.io/) 开发个人小程序
+#### 基于[Hyperf](https://doc.hyperf.io/) 开发个人小程序
 
-# [![Build Status](https://travis-ci.org/gaotiefeng/hyperf-xcx.svg?branch=master)](https://travis-ci.org/gaotiefeng/hyperf-xcx)
+#### [![Build Status](https://travis-ci.org/gaotiefeng/hyperf-xcx.svg?branch=master)](https://travis-ci.org/gaotiefeng/hyperf-xcx)
 
-# ![xcx](https://raw.githubusercontent.com/gaotiefeng/images/master/xcx/xcx.jpg)
+<img src="https://raw.githubusercontent.com/gaotiefeng/images/master/xcx/xcx.jpg" width="150px" height="150px;"/>
