@@ -4,7 +4,7 @@ services:
     image: $REGISTRY_URL/$PROJECT_NAME:master
     environment:
       - "APP_PROJECT=hyperf-xcx"
-      - "APP_ENV=test"
+      - "APP_ENV=master"
     ports:
       - 9501:9501
     deploy:
@@ -20,11 +20,11 @@ services:
     networks:
       - default-network
     configs:
-      - source: hyperf-xcx_v1.0
+      - source: hyperf-xcx
         target: /opt/www/.env
 configs:
-  hyperf-xcx_v1.0:
+  hyperf-xcx:
     external: true
 networks:
-  hyperf_net:
+  default-network:
     external: true
