@@ -1,9 +1,9 @@
 version: '3.7'
 services:
-  hyperf:
-    image: $REGISTRY_URL/$PROJECT_NAME:test
+  hyperf-xcx:
+    image: $REGISTRY_URL/$PROJECT_NAME:master
     environment:
-      - "APP_PROJECT=hyperf"
+      - "APP_PROJECT=hyperf-xcx"
       - "APP_ENV=test"
     ports:
       - 9501:9501
@@ -18,12 +18,12 @@ services:
         delay: 5s
         order: start-first
     networks:
-      - hyperf_net
+      - default-network
     configs:
-      - source: hyperf_v1.0
+      - source: hyperf-xcx_v1.0
         target: /opt/www/.env
 configs:
-  hyperf_v1.0:
+  hyperf-xcx_v1.0:
     external: true
 networks:
   hyperf_net:
