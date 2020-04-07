@@ -17,3 +17,5 @@
 ```
 docker pull gaotiefeng/hyperf-xcx:latest
 ```
+
+##### 单体项目 部署用 Supervisor进程管理器
