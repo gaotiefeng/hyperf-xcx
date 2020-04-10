@@ -14,7 +14,6 @@ namespace App\Controller\Xcx;
 
 use App\Constants\ErrorCode;
 use App\Controller\AbstractController;
-use App\Controller\IndexController;
 use App\Exception\BusinessException;
 use App\Services\Biz\Xcx\UserRemarkMoneyBiz;
 use Hyperf\Di\Annotation\Inject;

@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace App\Controller\Xcx;
 
 use App\Controller\AbstractController;
-use App\Controller\IndexController;
 use App\Job\TemplateJob;
 use App\Model\User;
 use App\Request\Xcx\RemarkRequest;

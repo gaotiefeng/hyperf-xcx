@@ -21,13 +21,13 @@ use Hyperf\Di\Annotation\Inject;
 class AdminBiz extends Services
 {
     /**
-     * @Inject
+     * @Inject()
      * @var AdminDao
      */
     protected $dao;
 
     /**
-     * @Inject
+     * @Inject()
      * @var JwtAuthInterface
      */
     protected $jwtAuth;

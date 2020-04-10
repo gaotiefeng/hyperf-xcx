@@ -15,7 +15,7 @@ class AdminAdminTest extends \HyperfTest\HttpTestCase
     public function testAdminAdminLogin()
     {
         $res = $this->adminClient->post('/admin/login', [
-            'mobile' => '15904434500',
+            'mobile' => '15904432745',
             'password' => '123456',
         ]);
 
@@ -24,9 +24,9 @@ class AdminAdminTest extends \HyperfTest\HttpTestCase
 
     public function testAdminAdminRegister()
     {
-        $mobile = rand(10,99);
+        $mobile = rand(1000, 9999);
         $res = $this->adminClient->post('/admin/register', [
-            'mobile' => '159044350'.$mobile,
+            'mobile' => '1590443' . $mobile,
             'password' => '123456',
         ]);
 

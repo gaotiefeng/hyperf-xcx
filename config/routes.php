@@ -12,26 +12,25 @@ declare(strict_types=1);
 
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/api', 'app\Controller\IndexController@index');
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'app\Controller\IndexController@html');
-
+Router::addRoute(['GET', 'POST', 'HEAD'], '/api', 'App\Controller\IndexController@index');
+Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@html');
 
 Router::addServer('http', function () {
-    Router::get('/user/login', 'app\Controller\Xcx\UserController@login');
-    Router::get('/user/info', 'app\Controller\Xcx\UserController@info');
+    Router::get('/user/login', 'App\Controller\Xcx\UserController@login');
+    Router::get('/user/info', 'App\Controller\Xcx\UserController@info');
 
-    Router::get('/remark/index', 'app\Controller\Xcx\RemarkController@index');
-    Router::post('/remark/save', 'app\Controller\Xcx\RemarkController@save');
+    Router::get('/remark/index', 'App\Controller\Xcx\RemarkController@index');
+    Router::post('/remark/save', 'App\Controller\Xcx\RemarkController@save');
 
-    Router::get('/remark/type/index', 'app\Controller\Xcx\RemarkTypeController@index');
+    Router::get('/remark/type/index', 'App\Controller\Xcx\RemarkTypeController@index');
 
-    Router::get('/user/remark/money/index', 'app\Controller\Xcx\UserRemarkMoneyController@index');
+    Router::get('/user/remark/money/index', 'App\Controller\Xcx\UserRemarkMoneyController@index');
 });
 
 Router::addServer('admin', function () {
-    Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'app\Controller\IndexController@index');
-    Router::post('/admin/login', 'app\Controller\Admin\AdminController@login');
-    Router::post('/admin/register', 'app\Controller\Admin\AdminController@register');
+    Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+    Router::post('/admin/login', 'App\Controller\Admin\AdminController@login');
+    Router::post('/admin/register', 'App\Controller\Admin\AdminController@register');
 });
 
 Router::addServer('ws', function () {

@@ -33,7 +33,7 @@ class CorsMiddleware implements MiddlewareInterface
             ->withHeader('Access-Control-Allow-Headers', '*');
         /*        $response = di()->get(Response::class)->response()->withHeader('Access-Control-Allow-Origin', '*')
                     ->withHeader('Access-Control-Allow-Credentials', 'true')
-                    ->withHeader('Access-Control-Allow-Headers', 'Origin, DNT, Keep-Alive, User-Agent, Cache-Control, Content-Type, Authorization');*/
+                    ->withHeader('Access-Control-Allow-Headers', 'Origin, DNT, Keep-Alive, User-Proxy, Cache-Control, Content-Type, Authorization');*/
 
         Context::set(ResponseInterface::class, $response);
 
