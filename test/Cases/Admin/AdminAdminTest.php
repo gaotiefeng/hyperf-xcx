@@ -15,7 +15,7 @@ class AdminAdminTest extends \HyperfTest\HttpTestCase
     public function testAdminAdminLogin()
     {
         $res = $this->adminClient->post('/admin/login', [
-            'mobile' => '15904432745',
+            'mobile' => '15904434500',
             'password' => '123456',
         ]);
 
